@@ -1,0 +1,1718 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal de Convocatorias y Postulación</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-main: #0b0f19;
+        --bg-card: #131b2e;
+        --bg-card-hover: #19233c;
+        --bg-surface: #1e293b;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --accent: #3b82f6;
+        --accent-hover: #2563eb;
+        --accent-soft: rgba(59, 130, 246, 0.14);
+        --emerald: #10b981;
+        --emerald-soft: rgba(16, 185, 129, 0.14);
+        --amber: #f59e0b;
+        --amber-soft: rgba(245, 158, 11, 0.14);
+        --danger: #ef4444;
+        --danger-soft: rgba(239, 68, 68, 0.14);
+        --border: #26334d;
+        --radius-lg: 16px;
+        --radius-md: 12px;
+        --radius-sm: 8px;
+        --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        --max-w: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* NAVBAR */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(11, 15, 25, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-container {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: var(--text-primary);
+        font-weight: 700;
+        font-size: 1.15rem;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), #60a5fa);
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      .nav-links a.link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .nav-links a.link:hover {
+        color: var(--text-primary);
+      }
+
+      /* BOTONES */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.7rem 1.35rem;
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--accent);
+        color: #ffffff;
+        box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-1px);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border-color: var(--border);
+        color: var(--text-primary);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--bg-surface);
+        border-color: var(--text-secondary);
+      }
+
+      /* HERO */
+      .hero {
+        padding: 4.5rem 1.5rem 3.5rem;
+        max-width: var(--max-w);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.85rem;
+        border-radius: 999px;
+        background-color: var(--accent-soft);
+        color: #60a5fa;
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+        border: 1px solid rgba(59, 130, 246, 0.25);
+      }
+
+      .pill-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--emerald);
+        border-radius: 50%;
+        box-shadow: 0 0 8px var(--emerald);
+      }
+
+      .hero h1 {
+        font-size: clamp(2.1rem, 4vw, 3.1rem);
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.1rem;
+      }
+
+      .hero p.lead {
+        color: var(--text-secondary);
+        font-size: 1.08rem;
+        margin-bottom: 2rem;
+        max-width: 58ch;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      /* TARJETA RESUMEN DEL FLUJO EN EL HERO */
+      .flow-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+        box-shadow: var(--shadow);
+      }
+
+      .flow-box h3 {
+        font-size: 1.05rem;
+        margin-bottom: 1.15rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.75rem;
+      }
+
+      .flow-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .flow-item {
+        display: flex;
+        gap: 0.9rem;
+        align-items: flex-start;
+      }
+
+      .flow-num {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        color: #60a5fa;
+        font-weight: 700;
+        font-size: 0.85rem;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .flow-item strong {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--text-primary);
+      }
+
+      .flow-item span {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+
+      /* SECCIONES GENERALES */
+      .section {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+        width: 100%;
+      }
+
+      .section-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.75rem;
+        letter-spacing: -0.02em;
+      }
+
+      .section-header p {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        margin-top: 0.25rem;
+      }
+
+      .controls-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .search-input {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        padding: 0.65rem 1rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.92rem;
+        min-width: 260px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .search-input:focus {
+        border-color: var(--accent);
+      }
+
+      .status-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        padding: 0.5rem 0.85rem;
+        border-radius: var(--radius-sm);
+      }
+
+      /* GRID DE CARDS DE NOTION */
+      .offers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .offer-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.25rem;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          background-color 0.2s ease;
+        box-shadow: var(--shadow);
+      }
+
+      .offer-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(59, 130, 246, 0.5);
+        background: var(--bg-card-hover);
+      }
+
+      .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .badge-id {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.25rem 0.6rem;
+        border-radius: 6px;
+        background: var(--bg-surface);
+        color: var(--text-secondary);
+        border: 1px solid var(--border);
+      }
+
+      .badge-status {
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.25rem 0.65rem;
+        border-radius: 999px;
+        background: var(--emerald-soft);
+        color: #34d399;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+
+      .offer-card h3 {
+        font-size: 1.28rem;
+        line-height: 1.3;
+        margin-bottom: 0.6rem;
+        color: var(--text-primary);
+      }
+
+      .offer-desc {
+        color: var(--text-secondary);
+        font-size: 0.93rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .req-section {
+        border-top: 1px solid var(--border);
+        padding-top: 0.9rem;
+        margin-top: 0.75rem;
+      }
+
+      .req-title {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .req-title.obligatorios {
+        color: #60a5fa;
+      }
+
+      .req-title.deseables {
+        color: #fbbf24;
+      }
+
+      .req-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+
+      .req-list li {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 1.1rem;
+      }
+
+      .req-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0.2rem;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      .card-footer {
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .card-footer .btn {
+        width: 100%;
+      }
+
+      /* SKELETON LOADING */
+      .skeleton-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.6rem;
+        height: 360px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .sk-line {
+        background: linear-gradient(
+          90deg,
+          #1e293b 25%,
+          #2a3952 50%,
+          #1e293b 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 6px;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      /* CAJA DE ESTADO VACÍO O ERROR */
+      .state-box {
+        grid-column: 1 / -1;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .state-box h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .state-box p {
+        color: var(--text-secondary);
+        font-size: 0.94rem;
+        margin-bottom: 1.25rem;
+      }
+
+      /* PASOS DETALLADOS DEL PROCESO */
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.25rem;
+      }
+
+      .step-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 1.4rem;
+      }
+
+      .step-card .step-badge {
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: #60a5fa;
+        background: var(--accent-soft);
+        padding: 0.25rem 0.65rem;
+        border-radius: 6px;
+        margin-bottom: 0.75rem;
+      }
+
+      .step-card h4 {
+        font-size: 1.05rem;
+        margin-bottom: 0.45rem;
+      }
+
+      .step-card p {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+      }
+
+      /* FOOTER */
+      footer {
+        margin-top: auto;
+        border-top: 1px solid var(--border);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 0.88rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 2.5rem;
+        }
+        .search-input {
+          width: 100%;
+        }
+      }
+
+      /* SISTEMA VISUAL: inspirado en el diseño de AlfaLobo Talent */
+      :root {
+        --bg-main: #0b0f19;
+        --bg-card: rgba(30, 41, 59, 0.68);
+        --bg-card-hover: rgba(30, 41, 59, 0.94);
+        --bg-surface: rgba(15, 23, 42, 0.72);
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --accent: #6366f1;
+        --accent-hover: #4f46e5;
+        --accent-soft: rgba(99, 102, 241, 0.15);
+        --border: rgba(255, 255, 255, 0.09);
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.55);
+        --max-w: 1200px;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background-image:
+          radial-gradient(
+            circle at 14% 12%,
+            rgba(99, 102, 241, 0.14),
+            transparent 34%
+          ),
+          radial-gradient(
+            circle at 88% 23%,
+            rgba(6, 182, 212, 0.1),
+            transparent 34%
+          );
+        background-attachment: fixed;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .brand {
+        font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+      }
+
+      header {
+        background: rgba(11, 15, 25, 0.78);
+        border-bottom-color: var(--border);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+
+      .nav-container {
+        min-height: 76px;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+
+      .brand-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
+        background: linear-gradient(
+          135deg,
+          #6366f1 0%,
+          #8b5cf6 52%,
+          #06b6d4 100%
+        );
+        box-shadow: 0 0 28px rgba(99, 102, 241, 0.32);
+      }
+
+      .nav-links {
+        gap: 1.7rem;
+      }
+
+      .btn {
+        border-radius: 9px;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          #6366f1 0%,
+          #8b5cf6 52%,
+          #06b6d4 100%
+        );
+        box-shadow: 0 0 26px rgba(99, 102, 241, 0.26);
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(
+          135deg,
+          #5558e8 0%,
+          #7c4fe8 52%,
+          #089fba 100%
+        );
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(99, 102, 241, 0.4);
+      }
+
+      .btn-outline {
+        background: var(--bg-card);
+        border-color: var(--border);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .btn-outline:hover {
+        border-color: rgba(99, 102, 241, 0.6);
+        background: var(--bg-card-hover);
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        padding-top: 5.25rem;
+        padding-bottom: 4rem;
+        gap: 3rem;
+      }
+
+      .pill {
+        padding: 0.42rem 0.9rem;
+        color: #a5b4fc;
+        background: rgba(99, 102, 241, 0.12);
+        border-color: rgba(99, 102, 241, 0.3);
+      }
+
+      .pill-dot {
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.17);
+        animation: design-pulse 2s infinite;
+      }
+
+      @keyframes design-pulse {
+        50% {
+          transform: scale(1.22);
+          opacity: 0.76;
+        }
+      }
+
+      .hero h1 {
+        font-size: clamp(2.35rem, 4.6vw, 3.65rem);
+        line-height: 1.13;
+        letter-spacing: -0.045em;
+      }
+
+      .hero h1::selection,
+      .hero p::selection {
+        background: rgba(99, 102, 241, 0.4);
+      }
+
+      .hero .lead {
+        max-width: 62ch;
+        line-height: 1.75;
+      }
+
+      .flow-box {
+        padding: 1.75rem;
+        background: var(--bg-card);
+        border-color: var(--border);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .flow-box h3 {
+        padding-bottom: 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .flow-list {
+        gap: 0.8rem;
+      }
+
+      .flow-item {
+        align-items: center;
+        padding: 0.85rem 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        background: rgba(15, 23, 42, 0.42);
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .flow-item:hover {
+        transform: translateX(4px);
+        border-color: rgba(99, 102, 241, 0.55);
+      }
+
+      .flow-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(99, 102, 241, 0.18);
+        color: #a5b4fc;
+      }
+
+      .section {
+        padding-top: 4.5rem;
+        padding-bottom: 4.5rem;
+      }
+
+      .section-header {
+        display: block;
+        max-width: 760px;
+        margin: 0 auto 2.75rem;
+        text-align: center;
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.8rem, 3vw, 2.45rem);
+        letter-spacing: -0.035em;
+      }
+
+      .section-header p {
+        margin-top: 0.8rem;
+        font-size: 1rem;
+      }
+
+      #convocatorias .section-header {
+        margin-bottom: 2rem;
+      }
+
+      #convocatorias .section-header > div:last-child {
+        margin-top: 1.8rem;
+      }
+
+      .controls-bar {
+        padding: 1rem;
+        gap: 0.8rem;
+        justify-content: space-between;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+      }
+
+      .search-input {
+        flex: 1;
+        min-height: 44px;
+        background: rgba(11, 15, 25, 0.72);
+        border-color: var(--border);
+      }
+
+      .status-indicator {
+        min-height: 42px;
+        white-space: nowrap;
+      }
+
+      .offer-card {
+        position: relative;
+        overflow: hidden;
+        padding: 1.75rem;
+        border-color: var(--border);
+        background: var(--bg-card);
+        backdrop-filter: blur(10px);
+      }
+
+      .offer-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          135deg,
+          #6366f1 0%,
+          #8b5cf6 52%,
+          #06b6d4 100%
+        );
+        opacity: 0.9;
+      }
+
+      .offer-card:hover {
+        border-color: rgba(99, 102, 241, 0.48);
+        box-shadow:
+          0 24px 48px -18px rgba(0, 0, 0, 0.68),
+          0 0 24px rgba(99, 102, 241, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .badge-id {
+        color: #a5b4fc;
+        background: rgba(99, 102, 241, 0.14);
+        border-color: rgba(99, 102, 241, 0.25);
+      }
+
+      .badge-status {
+        background: rgba(16, 185, 129, 0.14);
+        color: #34d399;
+        border-color: rgba(16, 185, 129, 0.35);
+      }
+
+      .offer-card h3 {
+        font-size: 1.32rem;
+        letter-spacing: -0.025em;
+      }
+
+      .req-title.obligatorios {
+        color: #f87171;
+      }
+
+      .req-title.deseables {
+        color: #38bdf8;
+      }
+
+      .req-list li::before {
+        color: #818cf8;
+      }
+
+      .step-card {
+        padding: 1.65rem;
+        background: var(--bg-card);
+        border-color: var(--border);
+        border-radius: var(--radius-md);
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease;
+      }
+
+      .step-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(99, 102, 241, 0.48);
+      }
+
+      .step-card .step-badge {
+        color: #a5b4fc;
+        background: rgba(99, 102, 241, 0.15);
+      }
+
+      .skeleton-card {
+        border-color: var(--border);
+        background: var(--bg-card);
+      }
+
+      .state-box {
+        background: var(--bg-card);
+        border-color: var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      footer {
+        border-top-color: var(--border);
+        background: rgba(11, 15, 25, 0.35);
+      }
+
+      :focus-visible {
+        outline: 2px solid #818cf8;
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 860px) {
+        .nav-container {
+          align-items: flex-start;
+          flex-direction: column;
+          padding-top: 0.8rem;
+          padding-bottom: 0.8rem;
+        }
+        .nav-links {
+          width: 100%;
+          flex-wrap: wrap;
+          gap: 0.75rem 1.1rem;
+        }
+        .nav-links .btn {
+          padding: 0.55rem 0.9rem;
+        }
+        .hero {
+          padding-top: 3rem;
+        }
+        .section-header {
+          text-align: left;
+          margin-left: 0;
+        }
+        .controls-bar {
+          align-items: stretch;
+        }
+        .search-input {
+          flex-basis: 100%;
+        }
+        .status-indicator {
+          white-space: normal;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .nav-container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        .brand {
+          font-size: 1rem;
+        }
+        .nav-links {
+          gap: 0.7rem;
+        }
+        .nav-links a.link {
+          font-size: 0.86rem;
+        }
+        .hero {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        .hero h1 {
+          font-size: clamp(2rem, 10vw, 2.7rem);
+        }
+        .hero-actions .btn {
+          width: 100%;
+        }
+        .offers-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .controls-bar > * {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      [data-theme="light"] {
+        --bg-main: #f8fafc;
+        --bg-card: rgba(255, 255, 255, 0.92);
+        --bg-card-hover: #ffffff;
+        --bg-surface: #f1f5f9;
+        --text-primary: #0f172a;
+        --text-secondary: #475569;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.1);
+      }
+
+      [data-theme="light"] body {
+        background-image:
+          radial-gradient(
+            circle at 14% 12%,
+            rgba(99, 102, 241, 0.08),
+            transparent 34%
+          ),
+          radial-gradient(
+            circle at 88% 23%,
+            rgba(6, 182, 212, 0.07),
+            transparent 34%
+          );
+      }
+
+      [data-theme="light"] header {
+        background: rgba(255, 255, 255, 0.86);
+      }
+
+      [data-theme="light"] .pill {
+        color: #4f46e5;
+      }
+
+      [data-theme="light"] .brand-tag {
+        color: #4f46e5;
+      }
+
+      [data-theme="light"] .flow-item {
+        background: rgba(248, 250, 252, 0.9);
+      }
+
+      [data-theme="light"] .search-input {
+        background: #f8fafc;
+      }
+
+      [data-theme="light"] footer {
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .brand-copy {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .brand-name {
+        white-space: nowrap;
+      }
+
+      .brand-tag {
+        padding: 0.15rem 0.55rem;
+        border: 1px solid rgba(99, 102, 241, 0.32);
+        border-radius: 999px;
+        background: rgba(99, 102, 241, 0.12);
+        color: #818cf8;
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0;
+      }
+
+      .theme-toggle {
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        display: inline-grid;
+        place-items: center;
+        color: var(--text-secondary);
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .theme-toggle:hover {
+        color: var(--text-primary);
+        border-color: #6366f1;
+        transform: translateY(-2px);
+      }
+
+      .theme-toggle svg {
+        width: 19px;
+        height: 19px;
+      }
+
+      header {
+        backdrop-filter: blur(16px);
+      }
+
+      .btn-outline {
+        backdrop-filter: blur(10px);
+      }
+
+      .flow-box {
+        backdrop-filter: blur(12px);
+      }
+
+      @media (max-width: 520px) {
+        .brand-copy {
+          gap: 0.45rem;
+        }
+        .brand-tag {
+          font-size: 0.62rem;
+          padding: 0.12rem 0.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+      <div class="nav-container">
+        <a href="#" class="brand">
+          <div class="brand-icon" aria-hidden="true">
+            <svg
+              width="23"
+              height="23"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <polyline points="16 11 18 13 22 9"></polyline>
+            </svg>
+          </div>
+          <span class="brand-copy">
+            <span class="brand-name">AlfaLobo Talent</span>
+            <span class="brand-tag">n8n + Notion AI</span>
+          </span>
+        </a>
+        <nav class="nav-links">
+          <a href="#convocatorias" class="link">Ofertas Activas</a>
+          <a href="#como-funciona" class="link">¿Cómo funciona?</a>
+          <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Activar modo claro"
+            title="Activar modo claro"
+          >
+            <svg
+              id="themeIcon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+              ></path>
+            </svg>
+          </button>
+          <a
+            href="https://alfalobo.app.n8n.cloud/form/dd5d7f18-f991-43b7-85bf-265f62ea0a26"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            Ir al Formulario →
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO PRINCIPAL -->
+    <section class="hero">
+      <div>
+        <div class="pill">
+          <span class="pill-dot"></span>
+          Sincronizado en tiempo real con Notion y n8n
+        </div>
+        <h1>
+          Postula a nuestras convocatorias vigentes de forma rápida y
+          transparente
+        </h1>
+        <p class="lead">
+          Revisa los puestos activos y sus requisitos. Al postular, nuestro
+          flujo automatizado valida tu registro por DNI, respalda tu CV en
+          formato PDF y realiza una preselección asistida para el equipo de
+          Recursos Humanos.
+        </p>
+        <div class="hero-actions">
+          <a
+            href="https://alfalobo.app.n8n.cloud/form/dd5d7f18-f991-43b7-85bf-265f62ea0a26"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            Registrar mis datos en el Formulario
+          </a>
+          <a href="#convocatorias" class="btn btn-outline">
+            Ver ofertas de Notion
+          </a>
+        </div>
+      </div>
+
+      <!-- RESUMEN DEL FLUJO -->
+      <aside class="flow-box">
+        <h3>
+          <span>Flujo de Postulación</span>
+          <span class="badge-status">Automatizado</span>
+        </h3>
+        <ul class="flow-list">
+          <li class="flow-item">
+            <div class="flow-num">1</div>
+            <div>
+              <strong>Selecciona una Convocatoria Activa</strong>
+              <span
+                >El formulario carga dinámicamente todas las vacantes con estado
+                Activa desde Notion.</span
+              >
+            </div>
+          </li>
+          <li class="flow-item">
+            <div class="flow-num">2</div>
+            <div>
+              <strong>Completa tus Datos y Sube tu CV (.PDF)</strong>
+              <span
+                >Ingresa tu DNI, nombre completo, correo, teléfono y adjunta tu
+                currículum en PDF.</span
+              >
+            </div>
+          </li>
+          <li class="flow-item">
+            <div class="flow-num">3</div>
+            <div>
+              <strong>Validación de Postulación Única</strong>
+              <span
+                >Se verifica automáticamente tu DNI + Convocatoria para evitar
+                evaluaciones duplicadas.</span
+              >
+            </div>
+          </li>
+          <li class="flow-item">
+            <div class="flow-num">4</div>
+            <div>
+              <strong>Preselección con IA y Registro en RRHH</strong>
+              <span
+                >Se evalúan los requisitos obligatorios y deseables y se
+                registra tu expediente en Notion.</span
+              >
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- SECCIÓN DE CONVOCATORIAS DINÁMICAS DESDE NOTION -->
+    <section id="convocatorias" class="section">
+      <div class="section-header">
+        <div>
+          <h2>Convocatorias Activas</h2>
+          <p>
+            Ofertas obtenidas automáticamente desde la base de datos de Notion.
+          </p>
+        </div>
+        <div class="controls-bar">
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Buscar por puesto, código o requisito..."
+            aria-label="Buscar convocatorias"
+          />
+          <button
+            id="refreshBtn"
+            class="btn btn-outline"
+            type="button"
+            title="Recargar desde Notion"
+          >
+            Actualizar
+          </button>
+          <div id="statusBadge" class="status-indicator">
+            Conectando con Notion...
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENEDOR DE CARDS -->
+      <div id="offersGrid" class="offers-grid">
+        <!-- Se llena automáticamente al abrir la página -->
+      </div>
+    </section>
+
+    <!-- EXPLICACIÓN PARA EL CANDIDATO -->
+    <section id="como-funciona" class="section">
+      <div class="section-header">
+        <div>
+          <h2>¿Qué debes tener en cuenta antes de postular?</h2>
+          <p>
+            Indicaciones basadas en las reglas de validación del formulario.
+          </p>
+        </div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-badge">Requisito de Archivo</span>
+          <h4>Currículum en formato PDF</h4>
+          <p>
+            Asegúrate de que tu CV esté en formato <strong>.pdf</strong> con
+            texto legible (no imagen escaneada) para que el extractor pueda
+            analizar correctamente tu experiencia.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-badge">Control por DNI</span>
+          <h4>Una postulación por vacante</h4>
+          <p>
+            El sistema valida tu <strong>Número de DNI</strong> junto con la
+            convocatoria elegida. Si ya postulaste antes al mismo puesto, el
+            sistema te informará sin duplicar la evaluación.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-badge">Evaluación Objetiva</span>
+          <h4>Requisitos Obligatorios y Deseables</h4>
+          <p>
+            Contrasta tu perfil con las tarjetas de arriba. El agente de
+            preselección revisa punto por punto la evidencia en tu CV frente a
+            los requisitos de la convocatoria.
+          </p>
+        </div>
+        <div class="step-card">
+          <span class="step-badge">Confirmación Inmediata</span>
+          <h4>Registro en Recursos Humanos</h4>
+          <p>
+            Una vez enviado el formulario, tu CV queda respaldado en Google
+            Drive y tu ficha se registra en Notion para la revisión final de
+            RRHH.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Sistema de Preselección de CVs • Conectado a n8n &amp; Notion</p>
+    </footer>
+
+    <!-- LÓGICA VANILLA JS: CARGA AUTOMÁTICA DESDE N8N -->
+    <script>
+      /**
+       * CONFIGURACIÓN DE ENDPOINTS DE TU FLUJO N8N
+       * - FORM_URL: URL oficial de tu nodo "Inicializar Postulación"
+       * - WEBHOOK_URL: URL del nodo Webhook GET en tu n8n que devuelve las filas de Notion ("Obtener Convocatias activas")
+       */
+      const N8N_FORM_URL =
+        "https://alfalobo.app.n8n.cloud/form/dd5d7f18-f991-43b7-85bf-265f62ea0a26";
+      const N8N_WEBHOOK_URL =
+        "https://alfalobo.app.n8n.cloud/webhook/convocatorias-activas";
+
+      const offersGrid = document.getElementById("offersGrid");
+      const statusBadge = document.getElementById("statusBadge");
+      const searchInput = document.getElementById("searchInput");
+      const refreshBtn = document.getElementById("refreshBtn");
+
+      let allOffers = [];
+
+      // Escapar HTML por seguridad
+      function escapeHTML(str) {
+        return String(str ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // Extraer propiedad de Notion (compatible con modo simplificado `property_...` o estructura cruda de Notion)
+      function getField(item, keys, fallback = "") {
+        if (!item || typeof item !== "object") return fallback;
+        const source =
+          item.json && typeof item.json === "object" ? item.json : item;
+
+        for (const key of keys) {
+          if (
+            source[key] !== undefined &&
+            source[key] !== null &&
+            source[key] !== ""
+          ) {
+            const val = source[key];
+            if (typeof val === "string" || typeof val === "number")
+              return String(val);
+            if (Array.isArray(val))
+              return val.map((v) => v?.plain_text || v?.name || v).join(", ");
+          }
+        }
+
+        // Soporte por si el nodo Notion devuelve `properties` sin simplificar
+        if (source.properties && typeof source.properties === "object") {
+          for (const key of keys) {
+            const prop = source.properties[key];
+            if (!prop) continue;
+            if (Array.isArray(prop.title))
+              return prop.title.map((t) => t.plain_text).join("");
+            if (Array.isArray(prop.rich_text))
+              return prop.rich_text.map((t) => t.plain_text).join("");
+            if (prop.select?.name) return prop.select.name;
+            if (prop.status?.name) return prop.status.name;
+            if (prop.unique_id) {
+              return (
+                (prop.unique_id.prefix ? prop.unique_id.prefix + "-" : "") +
+                prop.unique_id.number
+              );
+            }
+          }
+        }
+
+        return fallback;
+      }
+
+      // Convierte texto multilínea o con viñetas en items <li>
+      function formatRequirementsList(rawText) {
+        if (!rawText || !String(rawText).trim()) return [];
+        return String(rawText)
+          .split(/\r?\n|•|·/)
+          .map((line) => line.replace(/^[-*]\s*/, "").trim())
+          .filter(Boolean);
+      }
+
+      // Muestra tarjetas skeleton mientras carga
+      function renderLoadingSkeletons() {
+        statusBadge.textContent = "Cargando desde Notion...";
+        offersGrid.innerHTML = Array.from({ length: 3 })
+          .map(
+            () => `
+        <div class="skeleton-card" aria-hidden="true">
+          <div class="sk-line" style="width: 45%; height: 22px;"></div>
+          <div class="sk-line" style="width: 80%; height: 28px;"></div>
+          <div class="sk-line" style="width: 100%; height: 65px;"></div>
+          <div class="sk-line" style="width: 90%; height: 90px; margin-top: auto;"></div>
+          <div class="sk-line" style="width: 100%; height: 42px;"></div>
+        </div>
+      `,
+          )
+          .join("");
+      }
+
+      // Renderiza las tarjetas de convocatorias en el DOM
+      function renderOffers(offers) {
+        if (!offers || offers.length === 0) {
+          offersGrid.innerHTML = `
+          <div class="state-box">
+            <h3>No se encontraron convocatorias activas</h3>
+            <p>En este momento no hay vacantes que coincidan con tu búsqueda o disponibles en Notion. Sin embargo, puedes acceder directamente al formulario oficial.</p>
+            <a href="${N8N_FORM_URL}" target="_blank" rel="noopener" class="btn btn-primary">
+              Ir al Formulario de Postulación →
+            </a>
+          </div>
+        `;
+          return;
+        }
+
+        offersGrid.innerHTML = offers
+          .map((offer) => {
+            const obligatoriosHTML = offer.obligatorios.length
+              ? `<ul class="req-list">${offer.obligatorios.map((r) => `<li>${escapeHTML(r)}</li>`).join("")}</ul>`
+              : `<p style="font-size:0.86rem; color:var(--text-muted);">No especificados.</p>`;
+
+            const deseablesHTML = offer.deseables.length
+              ? `
+            <div class="req-section">
+              <div class="req-title deseables">★ Requisitos Deseables</div>
+              <ul class="req-list">${offer.deseables.map((r) => `<li>${escapeHTML(r)}</li>`).join("")}</ul>
+            </div>
+          `
+              : "";
+
+            return `
+          <article class="offer-card">
+            <div>
+              <div class="card-top">
+                <span class="badge-id">${escapeHTML(offer.idConvocatoria)}</span>
+                <span class="badge-status">${escapeHTML(offer.estado)}</span>
+              </div>
+              <h3>${escapeHTML(offer.puesto)}</h3>
+              <p class="offer-desc">${escapeHTML(offer.descripcion)}</p>
+
+              <div class="req-section">
+                <div class="req-title obligatorios">✓ Requisitos Obligatorios</div>
+                ${obligatoriosHTML}
+              </div>
+
+              ${deseablesHTML}
+            </div>
+
+            <div class="card-footer">
+              <a href="${N8N_FORM_URL}" target="_blank" rel="noopener" class="btn btn-primary">
+                Postular a ${escapeHTML(offer.puesto)} →
+              </a>
+            </div>
+          </article>
+        `;
+          })
+          .join("");
+      }
+
+      // Normaliza cada fila proveniente del nodo Notion de n8n
+      function normalizeNotionItems(rawData) {
+        const list = Array.isArray(rawData)
+          ? rawData
+          : Array.isArray(rawData?.data)
+            ? rawData.data
+            : Array.isArray(rawData?.items)
+              ? rawData.items
+              : rawData && typeof rawData === "object"
+                ? [rawData]
+                : [];
+
+        return list
+          .map((item, idx) => {
+            const puesto = getField(item, [
+              "property_puesto",
+              "Puesto",
+              "puesto",
+              "name",
+              "title",
+            ]);
+            if (!puesto) return null;
+
+            const idConvocatoria = getField(
+              item,
+              [
+                "property_id_convocatoria",
+                "ID Convocatoria",
+                "id_convocatoria",
+                "ID",
+              ],
+              `CONV-${String(idx + 1).padStart(2, "0")}`,
+            );
+
+            const estado = getField(
+              item,
+              ["property_estado", "Estado", "estado"],
+              "Activa",
+            );
+            const descripcion = getField(
+              item,
+              [
+                "property_descripción",
+                "property_descripcion",
+                "Descripción",
+                "Descripcion",
+                "descripcion",
+              ],
+              "Convocatoria abierta para evaluación de perfil.",
+            );
+
+            const reqObligatoriosRaw = getField(
+              item,
+              [
+                "property_requisitos_obligatorios",
+                "Requisitos obligatorios",
+                "requisitos_obligatorios",
+              ],
+              "",
+            );
+
+            const reqDeseablesRaw = getField(
+              item,
+              [
+                "property_requisitos_deseables",
+                "Requisitos deseables",
+                "requisitos_deseables",
+              ],
+              "",
+            );
+
+            return {
+              idConvocatoria,
+              puesto,
+              estado,
+              descripcion,
+              obligatorios: formatRequirementsList(reqObligatoriosRaw),
+              deseables: formatRequirementsList(reqDeseablesRaw),
+            };
+          })
+          .filter(Boolean);
+      }
+
+      // Petición automática al cargar el sitio web
+      async function fetchConvocatorias() {
+        renderLoadingSkeletons();
+
+        try {
+          const response = await fetch(N8N_WEBHOOK_URL, {
+            method: "GET",
+            headers: { Accept: "application/json" },
+            cache: "no-store",
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+
+          const data = await response.json();
+          allOffers = normalizeNotionItems(data);
+
+          statusBadge.textContent = `${allOffers.length} convocatoria(s) activa(s)`;
+          statusBadge.style.color = "#34d399";
+          renderOffers(allOffers);
+        } catch (error) {
+          console.error("Error al obtener convocatorias desde n8n:", error);
+          statusBadge.textContent = "Pendiente de activar Webhook en n8n";
+          statusBadge.style.color = "#fbbf24";
+
+          offersGrid.innerHTML = `
+          <div class="state-box">
+            <h3>No se pudo conectar con el Webhook de convocatorias</h3>
+            <p>
+              Verifica que hayas pegado los 3 nodos (<strong>Webhook GET → Notion → Respond to Webhook</strong>) en tu flujo de n8n y que el workflow esté en estado <strong>Active</strong>.<br/>
+              Mientras tanto, puedes postular directamente desde el formulario oficial:
+            </p>
+            <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+              <a href="${N8N_FORM_URL}" target="_blank" rel="noopener" class="btn btn-primary">
+                Ir al Formulario de Postulación →
+              </a>
+              <button type="button" onclick="fetchConvocatorias()" class="btn btn-outline">
+                Reintentar conexión
+              </button>
+            </div>
+          </div>
+        `;
+        }
+      }
+
+      // Filtro en tiempo real por texto
+      searchInput.addEventListener("input", (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        if (!q) {
+          renderOffers(allOffers);
+          return;
+        }
+        const filtered = allOffers.filter(
+          (o) =>
+            o.puesto.toLowerCase().includes(q) ||
+            o.idConvocatoria.toLowerCase().includes(q) ||
+            o.descripcion.toLowerCase().includes(q) ||
+            o.obligatorios.some((r) => r.toLowerCase().includes(q)) ||
+            o.deseables.some((r) => r.toLowerCase().includes(q)),
+        );
+        renderOffers(filtered);
+      });
+
+      refreshBtn.addEventListener("click", fetchConvocatorias);
+
+      // Alterna el tema y conserva la preferencia elegida por el usuario.
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+      const savedTheme = localStorage.getItem("alfalobo-theme");
+
+      function updateThemeControl(isLight) {
+        const actionLabel = isLight
+          ? "Activar modo oscuro"
+          : "Activar modo claro";
+        themeToggle.setAttribute("aria-label", actionLabel);
+        themeToggle.title = actionLabel;
+        themeIcon.innerHTML = isLight
+          ? '<path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path>'
+          : '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>';
+      }
+
+      if (savedTheme === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+      updateThemeControl(savedTheme === "light");
+
+      themeToggle.addEventListener("click", () => {
+        const isLight =
+          document.documentElement.getAttribute("data-theme") !== "light";
+        if (isLight) {
+          document.documentElement.setAttribute("data-theme", "light");
+          localStorage.setItem("alfalobo-theme", "light");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+          localStorage.setItem("alfalobo-theme", "dark");
+        }
+        updateThemeControl(isLight);
+      });
+
+      // Ejecutar automáticamente apenas cargue la página
+      document.addEventListener("DOMContentLoaded", fetchConvocatorias);
+    </script>
+  </body>
+</html>
